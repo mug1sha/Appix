@@ -169,6 +169,7 @@ input, button { font: inherit; }
   .start-learning { width: 100%; }
   .nav-toggle { display: inline-flex; }
   .service, .project, .card, .lesson { grid-column: span 12; }
+
   .dashboard-panel { inset: 0; border-radius: 0; }
   .dashboard-actions { gap: 6px; }
   .dashboard-actions input[type="search"] { min-width: 0; width: 100%; }
@@ -177,12 +178,17 @@ input, button { font: inherit; }
 /* Improve dashboard heights */
 @media (max-height: 700px) {
   .dashboard-panel { inset: 1% 1% 1% 1%; }
+
 }
 
 /* Animations */
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+
 @keyframes scan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
 /* Map embed */
 .map-embed { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: var(--surface-1); }
 .map-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+@keyframes scan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+

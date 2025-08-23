@@ -54,6 +54,7 @@ $$('.reveal').forEach(el => revealObserver.observe(el));
 
 // Dashboard controls
 const dashboard = $('#dashboard');
+
 const openDashBtns = $$('[data-open-dashboard]');
 const closeBtn = $('#dashboardClose');
 const backdrop = $('.dashboard-backdrop');
@@ -121,6 +122,21 @@ window.addEventListener('hashchange', () => {
   if (location.hash === '#dashboard') openDashboard();
   else if (dashboard?.classList.contains('active')) closeDashboard();
 });
+
+const openDashBtns = $$('[\data-open-dashboard]');
+const closeBtn = $('#dashboardClose');
+const backdrop = $('.dashboard-backdrop');
+function openDashboard() {
+  dashboard?.classList.add('active');
+  dashboard?.setAttribute('aria-hidden', 'false');
+}
+function closeDashboard() {
+  dashboard?.classList.remove('active');
+  dashboard?.setAttribute('aria-hidden', 'true');
+}
+openDashBtns.forEach(btn => btn.addEventListener('click', openDashboard));
+[closeBtn, backdrop].forEach(el => el?.addEventListener('click', closeDashboard));
+
 
 // Lessons data
 const lessons = [
