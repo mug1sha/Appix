@@ -54,6 +54,75 @@ $$('.reveal').forEach(el => revealObserver.observe(el));
 
 // Dashboard controls
 const dashboard = $('#dashboard');
+
+const openDashBtns = $$('[data-open-dashboard]');
+const closeBtn = $('#dashboardClose');
+const backdrop = $('.dashboard-backdrop');
+let lastFocus = null;
+
+function lockScroll(lock) {
+  document.documentElement.style.overflow = lock ? 'hidden' : '';
+  document.body.style.overflow = lock ? 'hidden' : '';
+}
+
+function trapFocus(container, event) {
+  const focusable = $$('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])', container)
+    .filter(el => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+  if (focusable.length === 0) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function openDashboard() {
+  if (!dashboard) return;
+  lastFocus = document.activeElement;
+  dashboard.classList.add('active');
+  dashboard.setAttribute('aria-hidden', 'false');
+  lockScroll(true);
+  const firstInput = $('#lessonSearch') || $('#dashboardClose');
+  firstInput?.focus();
+  if (location.hash !== '#dashboard') history.pushState(null, '', '#dashboard');
+}
+function closeDashboard() {
+  if (!dashboard) return;
+  dashboard.classList.remove('active');
+  dashboard.setAttribute('aria-hidden', 'true');
+  lockScroll(false);
+  if (location.hash === '#dashboard') history.pushState(null, '', ' ');
+  if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+}
+openDashBtns.forEach(btn => btn.addEventListener('click', () => {
+  siteNav.classList.remove('open');
+  navToggle?.setAttribute('aria-expanded', 'false');
+  openDashboard();
+}));
+[closeBtn, backdrop].forEach(el => el?.addEventListener('click', closeDashboard));
+
+// Focus trap within dashboard
+if (dashboard) {
+  dashboard.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && dashboard.classList.contains('active')) {
+      trapFocus(dashboard, e);
+    }
+  });
+}
+
+// Hash support for direct open
+window.addEventListener('load', () => {
+  if (location.hash === '#dashboard') openDashboard();
+});
+window.addEventListener('hashchange', () => {
+  if (location.hash === '#dashboard') openDashboard();
+  else if (dashboard?.classList.contains('active')) closeDashboard();
+});
+
 const openDashBtns = $$('[\data-open-dashboard]');
 const closeBtn = $('#dashboardClose');
 const backdrop = $('.dashboard-backdrop');
@@ -67,6 +136,7 @@ function closeDashboard() {
 }
 openDashBtns.forEach(btn => btn.addEventListener('click', openDashboard));
 [closeBtn, backdrop].forEach(el => el?.addEventListener('click', closeDashboard));
+
 
 // Lessons data
 const lessons = [
