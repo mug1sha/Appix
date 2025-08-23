@@ -169,6 +169,14 @@ input, button { font: inherit; }
   .start-learning { width: 100%; }
   .nav-toggle { display: inline-flex; }
   .service, .project, .card, .lesson { grid-column: span 12; }
+  .dashboard-panel { inset: 0; border-radius: 0; }
+  .dashboard-actions { gap: 6px; }
+  .dashboard-actions input[type="search"] { min-width: 0; width: 100%; }
+}
+
+/* Improve dashboard heights */
+@media (max-height: 700px) {
+  .dashboard-panel { inset: 1% 1% 1% 1%; }
 }
 
 /* Animations */
