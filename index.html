@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CybeLearn — Cybersecurity Learning Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="CybeLearn home">
+        <span class="brand-symbol">▣</span>
+        <span class="brand-text">CybeLearn</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+        <button class="btn btn-accent start-learning" data-open-dashboard>Start Learning</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Home / Hero -->
+    <section id="home" class="section hero-section reveal">
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <h1 class="glitch" data-text="LEVEL UP YOUR SECURITY">LEVEL UP YOUR SECURITY</h1>
+          <p class="lead">A hi‑tech, hands‑on cybersecurity learning hub. Learn offensive and defensive skills with curated paths, labs, and projects.</p>
+          <div class="hero-ctas">
+            <a href="#about" class="btn btn-ghost">Explore Platform</a>
+            <button class="btn btn-accent" data-open-dashboard>Start Learning</button>
+          </div>
+          <div class="hero-kpis">
+            <div class="kpi-card">
+              <span class="kpi-value">50+ </span>
+              <span class="kpi-label">Lessons</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-value">12 </span>
+              <span class="kpi-label">Projects</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-value">8 </span>
+              <span class="kpi-label">Tracks</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="radar"></div>
+          <div class="mesh"></div>
+          <div class="hero-card">
+            <div class="hero-card-body">
+              <h3>Threat Map</h3>
+              <p>Live anomalies: <span id="anomalyCount">0</span></p>
+              <div class="tiny-graph" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section reveal">
+      <div class="container section-head">
+        <h2>About</h2>
+        <p>Built by security engineers. We focus on practical skills, clear explanations, and modern threats.</p>
+      </div>
+      <div class="container cards-grid">
+        <article class="card">
+          <div class="card-body">
+            <h3>Mission</h3>
+            <p>Help you think like an attacker and defend like a pro with scenario‑based learning.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h3>Approach</h3>
+            <p>Short lessons, guided labs, and projects that reinforce each concept.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h3>Stack</h3>
+            <p>Web app sec, network, cloud, reverse engineering, cryptography, and DFIR.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section reveal">
+      <div class="container section-head">
+        <h2>Services</h2>
+        <p>We provide structured learning and expert guidance to accelerate your growth.</p>
+      </div>
+      <div class="container cards-grid services-grid">
+        <article class="card service">
+          <div class="card-body">
+            <h3>Red Team</h3>
+            <ul class="list">
+              <li>Web exploitation</li>
+              <li>Network pivoting</li>
+              <li>Privilege escalation</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card service">
+          <div class="card-body">
+            <h3>Blue Team</h3>
+            <ul class="list">
+              <li>Threat hunting</li>
+              <li>SIEM & detections</li>
+              <li>Incident response</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card service">
+          <div class="card-body">
+            <h3>Cloud Security</h3>
+            <ul class="list">
+              <li>IAM hardening</li>
+              <li>Container security</li>
+              <li>Posture management</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card service">
+          <div class="card-body">
+            <h3>Secure Coding</h3>
+            <ul class="list">
+              <li>Threat modeling</li>
+              <li>Code reviews</li>
+              <li>SDLC integration</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section reveal">
+      <div class="container section-head">
+        <h2>Projects</h2>
+        <p>Hands‑on builds to cement knowledge. Each project includes objectives, hints, and solutions.</p>
+      </div>
+      <div class="container cards-grid project-grid">
+        <article class="card project">
+          <div class="card-body">
+            <h3>Build a SOC Detection</h3>
+            <p>Create Sigma rules to detect credential dumping, then validate in a lab.</p>
+            <div class="tags"><span>Blue</span><span>SIEM</span><span>Rules</span></div>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="card-body">
+            <h3>Exploit a Web App</h3>
+            <p>Find and exploit an IDOR in a sample app and propose fixes.</p>
+            <div class="tags"><span>Red</span><span>Web</span><span>IDOR</span></div>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="card-body">
+            <h3>Harden a Cloud Account</h3>
+            <p>Lock down IAM policies, rotate keys, and enforce MFA with audit checks.</p>
+            <div class="tags"><span>Cloud</span><span>IAM</span><span>Governance</span></div>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="card-body">
+            <h3>Reverse an ELF Binary</h3>
+            <p>Analyze strings and control flow, patch a check, and document the findings.</p>
+            <div class="tags"><span>RE</span><span>Linux</span><span>Analysis</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> CybeLearn. Secure more. Learn faster.</p>
+      <div class="footer-actions">
+        <button class="btn btn-small btn-ghost" data-open-dashboard>Start Learning</button>
+        <a class="btn btn-small btn-ghost" href="#home">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Learning Dashboard (Overlay) -->
+  <section class="dashboard" id="dashboard" aria-hidden="true" aria-label="Learning dashboard">
+    <div class="dashboard-backdrop" data-close-dashboard></div>
+    <div class="dashboard-panel" role="dialog" aria-modal="true">
+      <div class="dashboard-header">
+        <h2>Learning Dashboard</h2>
+        <div class="dashboard-actions">
+          <input type="search" id="lessonSearch" placeholder="Search lessons, tags…" aria-label="Search lessons" />
+          <button class="btn btn-ghost" id="resetProgress">Reset Progress</button>
+          <button class="icon-btn" id="dashboardClose" title="Close" aria-label="Close dashboard">✕</button>
+        </div>
+      </div>
+      <div class="dashboard-body">
+        <aside class="filters">
+          <h4>Filters</h4>
+          <div class="filter-group">
+            <span class="filter-label">Level</span>
+            <label><input type="checkbox" name="level" value="Beginner" checked /> Beginner</label>
+            <label><input type="checkbox" name="level" value="Intermediate" checked /> Intermediate</label>
+            <label><input type="checkbox" name="level" value="Advanced" checked /> Advanced</label>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Tags</span>
+            <div id="tagFilter" class="tags selectable"></div>
+          </div>
+          <div class="progress-wrap">
+            <span id="progressLabel">Progress: 0%</span>
+            <div class="progress-bar"><div id="progressBar"></div></div>
+          </div>
+        </aside>
+        <div class="lessons">
+          <div id="lessonsGrid" class="cards-grid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
